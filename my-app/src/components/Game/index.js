@@ -69,4 +69,27 @@ class Game extends Component {
           ? this.handleCorrectGuess(newData)
           : this.handleIncorrectGuess(newData);
       };
+      render() {
+        return (
+          <div>
+            <Nav score={this.state.score} topScore={this.state.topScore} />
+            <Header />
+            <Container>
+              {this.state.data.map(item => (
+                <ClickItem
+                  key={item.id}
+                  id={item.id}
+                  shake={!this.state.score && this.state.topScore}
+                  handleClick={this.handleItemClick}
+                  image={item.image}
+                />
+              ))}
+            </Container>
+            <Footer />
+          </div>
+        );
+      }
+    }
+    
+    export default Game;
     
